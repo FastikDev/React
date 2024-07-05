@@ -3,7 +3,7 @@ import './avatar.scss';
 
 const Avatar = (props) => {
   return (
-    <img className="avatar" src={props.avatarUrl} alt={props.autor} />
+    <img className="avatar" src={props.avatarUrl} alt={props.name} />
   );
 };
 
