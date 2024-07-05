@@ -5,9 +5,10 @@ import App from './App';
 
 const rootElement = document.querySelector('#root');
 
-const UserInfo = {
-  name: 'Tom',
+const userInfo = {
+  autor: 'Tom',
   avatarUrl: 'https://avatars3.githubusercontent.com/u10001',
 };
 
-ReactDOM.render(<App user={UserInfo} />, rootElement);
+ReactDOM.render(<App user={userInfo} />, rootElement);
+
