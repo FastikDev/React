@@ -6,7 +6,7 @@ import Comment from "./Comment";
 const rootElement = document.querySelector('#root');
 
 const userInfo = {
-  author: 'Tom',
+  name: 'Tom',
   avatarUrl: 'https://avatars3.githubusercontent.com/u10001',
 };
 
