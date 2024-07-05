@@ -12,3 +12,4 @@ const userInfo = {
 
 ReactDOM.render(<App user={userInfo} />, rootElement);
 
+
