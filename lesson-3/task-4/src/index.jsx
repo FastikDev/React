@@ -1,17 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.scss';
 import Greeting from './Greeting';
+import './index.scss';
 
-const rootElement = document.querySelector('#root');
+const rootElem = document.querySelector('#root');
 
-const userInfo = {
+const user = {
   firstName: 'John',
   lastName: 'Doe',
-  birthDate: '2006-08-06'
+  birthDate: '2007-07-06',
 };
 
 ReactDOM.render(
-  <Greeting user={userInfo} />,
-  rootElement
+  <Greeting
+    firstName={user.firstName}
+    lastName={user.lastName}
+    birthDate={user.birthDate}
+  />, rootElem  
 );
