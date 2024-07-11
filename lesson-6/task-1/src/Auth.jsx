@@ -10,7 +10,7 @@ const Auth = () => {
   const handleLogout = () => setIsLoggedIn(false);
 
   return (
-    <div>
+    <div className='panel'>
       <Greeting isLoggedIn={isLoggedIn} />
       {isLoggedIn ? <Logout onLogout={handleLogout} /> : <Login onLogin={handleLogin} />}
     </div>
