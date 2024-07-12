@@ -6,10 +6,11 @@ const Info = ({ info }) => {
   }
 
   return (
-    <div className="message">
+    <div className="info">
       {info}
     </div>
   );
 }
 
 export default Info;
+
