@@ -1,13 +1,9 @@
 import React from "react";
 
 const Online = () => {
-  render () {
-    return (
-      <div class="status">
-        <span class="status__text">Online</span>
-      </div>
-    );
-  }
+  return (
+    <span className="status__text">Online</span>
+  );
 };
 
 export default Online;
