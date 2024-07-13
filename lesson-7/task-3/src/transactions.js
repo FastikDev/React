@@ -5,7 +5,7 @@ const transactions = [
     to: 'EUR',
     amount: 1200,
     rate: 0.8,
-    time: '2019-01-10T17:08:35.4472',
+    time: '2019-01-10T17:08:35.447Z',
   },
   {
     id: 'id-1',
@@ -21,7 +21,7 @@ const transactions = [
     to: 'USD',
     amount: 100,
     rate: 1.1,
-    time: '2019-01-10T17:01:35.4472',
+    time: '2019-01-10T17:01:35.447Z',
   }
 ];
 
