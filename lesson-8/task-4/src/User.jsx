@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 
 class User extends Component {
-    state = {
-        user: null
-    };
-
+    constructor (props) {
+        super (props);
+        this.state = {
+            user: null
+        };
+    }
     componentDidMount () {
         this.fetchUser(this.props.userId);
     }
