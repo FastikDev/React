@@ -6,24 +6,31 @@ class ConnectionStatus extends React.Component {
         this.state = {
             status: 'online',
         };
-        this.updateNetworkStatus = this.updateNetworkStatus.bind(this);
     }
 
     componentDidMount() {
-        window.addEventListener('online', this.updateNetworkStatus);
-        window.addEventListener('offline', this.updateNetworkStatus);
+        window.addEventListener('online', this.handleOnline);
+        window.addEventListener('offline', this.handleOffline);
         this.updateNetworkStatus();
     }
 
     componentWillUnmount() {
-        window.removeEventListener('online', this.updateNetworkStatus);
-        window.removeEventListener('offline', this.updateNetworkStatus);
+        window.removeEventListener('online', this.handleOnline);
+        window.removeEventListener('offline', this.handleOffline);
     }
 
-    updateNetworkStatus() {
+    updateNetworkStatus = () => {
         this.setState({
             status: navigator.onLine ? 'online' : 'offline'
         });
+    }
+
+    handleOnline = () => {
+        this.setState({ status: 'online' });
+    }
+
+    handleOffline = () => {
+        this.setState({ status: 'offline' });
     }
 
     render() {
