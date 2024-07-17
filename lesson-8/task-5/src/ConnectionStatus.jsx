@@ -1,11 +1,12 @@
 import React from "react";
 
 class ConnectionStatus extends React.Component {
-    constructor (props) {
-        super (props)
+    constructor(props) {
+        super(props);
         this.state = {
-            status: 'Online',
+            status: 'online',
         };
+        this.updateNetworkStatus = this.updateNetworkStatus.bind(this);
     }
 
     componentDidMount() {
@@ -19,15 +20,15 @@ class ConnectionStatus extends React.Component {
         window.removeEventListener('offline', this.updateNetworkStatus);
     }
 
-    updateNetworkStatus = () => {
+    updateNetworkStatus() {
         this.setState({
-            status: navigator.onLine ? 'Online' : 'Offline'
+            status: navigator.onLine ? 'online' : 'offline'
         });
     }
 
     render() {
         const { status } = this.state;
-        const statusClass = status === 'Offline' ? 'status_offline' : '';
+        const statusClass = status === 'offline' ? 'status_offline' : '';
 
         return (
             <div className={`status ${statusClass}`}>{status}</div>
