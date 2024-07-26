@@ -1,31 +1,23 @@
-import React, { createRef } from 'react';
+import React from 'react';
 
 class UserForm extends React.Component {
-    constructor(props) {
-        super(props);
-        this.formRef = createRef();
-    }
+
 
     handleSubmit = event => {
         event.preventDefault();
-        
-        const formData = new FormData(this.formRef.current);
-        const data = {};
-        
-        formData.forEach((value, key) => {
-            if (key === 'student') {
-                data[key] = this.formRef.current.elements[key].checked;
-            } else {
-                data[key] = value;
-            }
-        });
 
-        this.props.onSubmit(data);
+        const formDate = new FormData(this.formRef);
+        const date = Object.fromEntries(formDate.entries());
+        this.props.onSubmit(date);
     }
 
-    render() {
+    setRef = node => {
+        this.formRef =  node;
+    }
+
+    render () {
         return (
-            <form className='login-form' ref={this.formRef} onSubmit={this.handleSubmit}>
+            <form className='login-form' ref={this.setRef} onSubmit={this.handleSubmit} >
                 <h1 className='form-title'>Profile</h1>
                 <div className='form-control'>
                     <label className='form-label' htmlFor='name'>Name</label>
@@ -37,7 +29,7 @@ class UserForm extends React.Component {
                 </div>
                 <div className='form-control'>
                     <label className='form-label' htmlFor='occupation'>Occupation</label>
-                    <select name='occupation' className='form-input' id='occupation'>
+                    <select name='occupation' className='form-input' id='occupation' >
                         <option value=''>Select...</option>
                         <option value='london'>London</option>
                         <option value='new-york'>New York</option>
