@@ -15,3 +15,4 @@ const Filter = ({ filterText, count, onChange }) => {
 };
 
 export default Filter;
+
