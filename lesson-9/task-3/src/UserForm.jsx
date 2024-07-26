@@ -2,22 +2,21 @@ import React from 'react';
 
 class UserForm extends React.Component {
 
-
     handleSubmit = event => {
         event.preventDefault();
-
-        const formDate = new FormData(this.formRef);
-        const date = Object.fromEntries(formDate.entries());
-        this.props.onSubmit(date);
+        const formData = new FormData(this.formRef);
+        const data = Object.fromEntries(formData.entries());
+        data.student = formData.get('student') === 'on';
+        this.props.onSubmit(data);
     }
 
     setRef = node => {
-        this.formRef =  node;
+        this.formRef = node;
     }
 
-    render () {
+    render() {
         return (
-            <form className='login-form' ref={this.setRef} onSubmit={this.handleSubmit} >
+            <form className='login-form' ref={this.setRef} onSubmit={this.handleSubmit}>
                 <h1 className='form-title'>Profile</h1>
                 <div className='form-control'>
                     <label className='form-label' htmlFor='name'>Name</label>
@@ -29,17 +28,17 @@ class UserForm extends React.Component {
                 </div>
                 <div className='form-control'>
                     <label className='form-label' htmlFor='occupation'>Occupation</label>
-                    <select name='occupation' className='form-input' id='occupation' >
+                    <select name='occupation' className='form-input' id='occupation'>
                         <option value=''>Select...</option>
                         <option value='london'>London</option>
                         <option value='new-york'>New York</option>
-                        <option value='sidney'>Sidney</option>
+                        <option value='sydney'>Sydney</option>
                         <option value='berlin'>Berlin</option>
                     </select>
                 </div>
                 <div className='form-control'>
                     <label className='form-label' htmlFor='about'>About</label>
-                    <textarea name='about' className='form-input' id='about' />
+                    <textarea name='about' className='form-input' id='about'></textarea>
                 </div>
                 <button className='submit-button' type='submit'>Submit</button>
             </form>
