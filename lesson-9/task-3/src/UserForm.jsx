@@ -13,11 +13,12 @@ class UserForm extends React.Component {
         const data = {};
         
         formData.forEach((value, key) => {
-            data[key] = value;
+            if (key === 'student') {
+                data[key] = this.formRef.current.elements[key].checked;
+            } else {
+                data[key] = value;
+            }
         });
-        
-        // Handle checkbox separately as it doesn't work with FormData
-        data.student = this.formRef.current.student.checked;
 
         this.props.onSubmit(data);
     }
