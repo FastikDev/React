@@ -1,22 +1,22 @@
-import React from 'react';
+import React, { createRef } from 'react';
 
 class UserForm extends React.Component {
+    constructor(props) {
+        super(props);
+        this.formRef = createRef();
+    }
 
     handleSubmit = event => {
         event.preventDefault();
-        const formData = new FormData(this.formRef);
+        const formData = new FormData(this.formRef.current);
         const data = Object.fromEntries(formData.entries());
         data.student = formData.get('student') === 'on';
         this.props.onSubmit(data);
     }
 
-    setRef = node => {
-        this.formRef = node;
-    }
-
     render() {
         return (
-            <form className='login-form' ref={this.setRef} onSubmit={this.handleSubmit}>
+            <form className='login-form' ref={this.formRef} onSubmit={this.handleSubmit}>
                 <h1 className='form-title'>Profile</h1>
                 <div className='form-control'>
                     <label className='form-label' htmlFor='name'>Name</label>
@@ -47,3 +47,4 @@ class UserForm extends React.Component {
 }
 
 export default UserForm;
+
