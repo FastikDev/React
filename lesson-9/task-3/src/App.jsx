@@ -1,16 +1,16 @@
-import React from "react";
-import UserForm from "./UserForm";
+import React from 'react';
+import UserForm from './UserForm';
 
 class App extends React.Component {
-    createUser = userDate => {
-        console.log(userDate);
-    }
+    createUser = userData => {
+        console.log(userData);
+    };
 
-    render () {
+    render() {
         return (
-            <div className="app">
+            <>
                 <UserForm onSubmit={this.createUser} />
-            </div>
+            </>
         );
     }
 }
