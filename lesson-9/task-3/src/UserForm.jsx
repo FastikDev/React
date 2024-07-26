@@ -10,7 +10,14 @@ class UserForm extends React.Component {
         event.preventDefault();
         
         const formData = new FormData(this.formRef.current);
-        const data = Object.fromEntries(formData.entries());
+        const data = {};
+        
+        formData.forEach((value, key) => {
+            data[key] = value;
+        });
+        
+        // Handle checkbox separately as it doesn't work with FormData
+        data.student = this.formRef.current.student.checked;
 
         this.props.onSubmit(data);
     }
