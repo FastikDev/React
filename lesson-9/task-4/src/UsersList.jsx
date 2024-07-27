@@ -1,37 +1,47 @@
-import React, { useState } from "react";
+import React, { Component } from "react";
 import User from "./User";
 import Filter from './Filter';
 
-const UsersList = ({ users }) => {
-
-    const [filterText, setFilterText] = useState('');
-
-    const handleFilterChange = (newFilterText) => {
-        setFilterText(newFilterText);
+class UsersList extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            filterText: ''
+        };
     }
 
-    const filteredUsers = users.filter(user => 
-        user.name.toLowerCase().includes(filterText.toLowerCase())
-    );
+    handleFilterChange = (newFilterText) => {
+        this.setState({ filterText: newFilterText });
+    }
 
-    return (
-        <div>
-            <Filter 
-                filterText={filterText}
-                count={filteredUsers.length}
-                onChange={handleFilterChange}
-            />
-            <ul className="users">
-                {filteredUsers.map(user => (
-                    <User 
-                        key={user.name}
-                        name={user.name}
-                        age={user.age}
-                    />
-                ))}
-            </ul>
-        </div>
-    );
-};
+    render() {
+        const { users } = this.props;
+        const { filterText } = this.state;
+
+        const filteredUsers = users.filter(user => 
+            user.name.toLowerCase().includes(filterText.toLowerCase())
+        );
+
+        return (
+            <div>
+                <Filter 
+                    filterText={filterText}
+                    count={filteredUsers.length}
+                    onChange={this.handleFilterChange}
+                />
+                <ul className="users">
+                    {filteredUsers.map(user => (
+                        <User 
+                            key={user.name}
+                            name={user.name}
+                            age={user.age}
+                        />
+                    ))}
+                </ul>
+            </div>
+        );
+    }
+}
 
 export default UsersList;
+

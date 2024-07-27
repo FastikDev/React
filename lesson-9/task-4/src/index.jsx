@@ -7,7 +7,6 @@ const users = [
     {name: 'Tad', age: 18},
     {name: 'Anna', age: 45},
     {name: 'Jhon', age: 30},
-    {name: 'Alice', age: 25},
     {name: 'Bob', age: 35}
 ];
 
