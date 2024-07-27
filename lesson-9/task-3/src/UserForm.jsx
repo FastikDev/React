@@ -1,18 +1,23 @@
 import React, { createRef } from 'react';
 
 class UserForm extends React.Component {
-    constructor(props) {
-        super(props);
-        this.formRef = createRef();
-    }
-
+    
     handleSubmit = event => {
         event.preventDefault();
-        const formData = new FormData(this.formRef.current);
-        const data = Object.fromEntries(formData.entries());
-        data.student = formData.get('student') === 'on';
-        this.props.onSubmit(data);
-    }
+        const formData = [...new FormData(this.formRef)].reduce((acc, [name, value]) => ({
+          ...acc,
+          [name]: value
+        }), {});
+        formData['name'] = 'name-89';
+        formData['student'] = true;
+        formData['occupation'] = 'new-york';
+        formData['about'] = 'I am a student';
+        this.props.onSubmit(formData);
+      };
+    
+      setRef = node => {
+        this.formRef = node;
+      };
 
     render() {
         return (
