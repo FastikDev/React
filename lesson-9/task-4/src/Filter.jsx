@@ -1,8 +1,8 @@
 import React from "react";
 
-const Filter = ({ filterText, count, onChange }) => {
+const Filter = ({ filterText, count, onChange }) => { 
     const handleChange = event => {
-        event,target.value;
+        onChange(event.target.value)
     };
 
     return (
@@ -12,7 +12,7 @@ const Filter = ({ filterText, count, onChange }) => {
                 type="text" 
                 className="filter__input" 
                 value={filterText} 
-                onChange={() => this.onChange()}
+                onChange={handleChange}
             />
         </div>
     );
