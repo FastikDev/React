@@ -12,7 +12,7 @@ const Filter = ({ filterText, count, onChange }) => {
                 type="text" 
                 className="filter__input" 
                 value={filterText} 
-                onChange={this.onChange}
+                onChange={() => this.onChange()}
             />
         </div>
     );
