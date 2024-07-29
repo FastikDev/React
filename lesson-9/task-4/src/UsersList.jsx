@@ -32,7 +32,7 @@ class UsersList extends Component {
                 <ul className="users">
                     {filteredUsers.map(user => (
                         <User 
-                            key={user.name}
+                            key={user.id}
                             name={user.name}
                             age={user.age}
                         />

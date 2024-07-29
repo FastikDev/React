@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 class Filter extends Component {
-    handleChange = event => {
+    onChange = event => {
         this.props.onChange(event.target.value);
     };
 
@@ -15,7 +15,7 @@ class Filter extends Component {
                     type="text" 
                     className="filter__input" 
                     value={filterText} 
-                    onChange={this.handleChange}
+                    onChange={this.onChange}
                 />
             </div>
         );
