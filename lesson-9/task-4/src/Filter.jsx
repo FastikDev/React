@@ -1,9 +1,15 @@
 import React, { Component } from "react";
 
 class Filter extends Component {
-    onChange = event => {
+    constructor(props) {
+        super(props);
+
+        this.onChange = this.onChange.bind(this);
+    }
+
+    onChange(event) {
         this.props.onChange(event.target.value);
-    };
+    }
 
     render() {
         const { filterText, count } = this.props;
@@ -23,5 +29,6 @@ class Filter extends Component {
 }
 
 export default Filter;
+
 
 
