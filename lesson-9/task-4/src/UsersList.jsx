@@ -18,7 +18,7 @@ const UsersList = ({ users }) => {
             <Filter 
                 filterText={filterText}
                 count={filteredUsers.length}
-                onChange={handleFilterChange}
+                onChange={(e) => handleFilterChange(e.target.value)}
             />
             <ul className="users">
                 {filteredUsers.map(user => (
@@ -34,5 +34,6 @@ const UsersList = ({ users }) => {
 };
 
 export default UsersList;
+
 
 

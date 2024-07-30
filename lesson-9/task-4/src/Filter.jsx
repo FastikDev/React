@@ -8,11 +8,12 @@ const Filter = ({ filterText, count, onChange }) => {
                 type="text"
                 className="filter__input"
                 value={filterText}
-                onChange={(event) => onChange(event.target.value)}
+                onChange={onChange}
             />
         </div>
     );
 };
 
 export default Filter;
+
 
