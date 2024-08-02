@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import ShoppingCart from './ShoppingCart';
-import Profile from './Profile';
+import ShoppingCart from "./ShoppingCart";
+import Profile from "./Profile";
 
 class App extends Component {
     state = {
         userData: {
-            firstName: 'Jhon',
-            lastName: 'Doe'
+            firstName: "John",
+            lastName: "Doe"
         }
     };
 
@@ -17,19 +17,20 @@ class App extends Component {
                 ...this.state.userData,
                 [name]: value
             }
-        })
-    }
+        });
+    };
 
-    render () {
+    render() {
+        const { firstName, lastName } = this.state.userData;
 
         return (
             <div className="page">
                 <h1 className="title">
-                    {`Hello, ${this.state.userData.firstName} ${this.state.userData.lastName}`}
+                    {`Hello, ${firstName} ${lastName}`}
                 </h1>
                 <main className="content">
                     <ShoppingCart userData={this.state.userData} />
-                    <Profile userData={this.state.userData} handleChange={this.handleChange}/>
+                    <Profile userData={this.state.userData} handleChange={this.handleChange} />
                 </main>
             </div>
         );
