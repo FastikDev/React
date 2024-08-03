@@ -19,7 +19,7 @@ class ShoppingCart extends Component {
     };
 
     render() {
-        const { userName } = this.props.userName;
+        const { userName } = this.props;
         const count = this.state.cartItems.length;
 
         return (
@@ -32,4 +32,3 @@ class ShoppingCart extends Component {
 }
 
 export default ShoppingCart;
-

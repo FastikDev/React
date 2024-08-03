@@ -7,7 +7,8 @@ class App extends Component {
         userData: {
             firstName: "John",
             lastName: "Doe"
-        }
+        },
+        searchQuery: ""
     };
 
     handleChange = event => {
@@ -20,16 +21,27 @@ class App extends Component {
         });
     };
 
+    handleSearchChange = event => {
+        this.setState({ searchQuery: event.target.value }); 
+    };
+
     render() {
         const { firstName, lastName } = this.state.userData;
+        const { searchQuery } = this.state;
 
         return (
             <div className="page">
                 <h1 className="title">
                     {`Hello, ${firstName} ${lastName}`}
                 </h1>
+                <input
+                    type="text"
+                    value={searchQuery}
+                    onChange={this.handleSearchChange}
+                />
+                <button onClick={this.handleSearchClick}>Search</button>  // Кнопка поиска
                 <main className="content">
-                    <ShoppingCart userName={this.state.userData} />
+                    <ShoppingCart userName={`${firstName} ${lastName}`} />
                     <Profile userData={this.state.userData} handleChange={this.handleChange} />
                 </main>
             </div>
