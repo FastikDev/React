@@ -1,7 +1,8 @@
 import React from "react";
 
 const UserForm = ({ userData, handleChange }) => {
-    return (
+
+   return (
         <form className="user-form">
             <input
                 type="text"
@@ -19,6 +20,6 @@ const UserForm = ({ userData, handleChange }) => {
             />
         </form>
     );
-};
+}
 
 export default UserForm;
