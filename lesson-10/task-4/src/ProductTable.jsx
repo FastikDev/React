@@ -1,50 +1,48 @@
-import React from "react";
-import ProductCategoryRow from "./ProductCategoryRow";
-import ProductRow from "./ProductRow";
+import React from 'react';
+import ProductCategoryRow from './ProductCategoryRow';
+import ProductRow from './ProductRow';
 
 const ProductTable = ({ products, filterText, inStockOnly }) => {
-    const rows = [];
-    let lastCategory = null;
+  const rows = [];
+  let lastCategory = null;
 
-    products.forEach(product => {
-        if (
-            product.name.toLowerCase().indexOf(
-                filterText.toLowerCase()
-            ) === -1
-        ) {
-            return;
-        }
+  products.forEach((product) => {
+    const { category, name, stocked } = product;
 
-        if (inStockOnly && !product.stocked) {
-            return;
-        }
-
-        if (product.category !== lastCategory) {
-            rows.push(
-                <ProductCategoryRow
-                    category={product.category}
-                    key={product.category} />
-            );
-        }
-        rows.push(
-            <ProductRow
-                product={product}
-                key={product.name} />
-        );
-        lastCategory = product.category;
-    });
-
-    return (
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Price</th>
-                </tr>
-            </thead>
-            <tbody>{rows}</tbody>
-        </table>
+    if (name.toLowerCase().indexOf(filterText.toLowerCase()) === -1) {
+      return;
+    }
+    if (inStockOnly && !stocked) {
+      return;
+    }
+    if (category !== lastCategory) {
+      rows.push(
+        <ProductCategoryRow
+          category={category}
+          key={category} 
+        />
+      );
+    }
+    rows.push(
+      <ProductRow
+        product={product}
+        key={name} 
+      />
     );
-};
+    lastCategory = category;
+  });
+
+  return (
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>{rows}</tbody>
+    </table>
+  );
+}
 
 export default ProductTable;
