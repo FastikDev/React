@@ -5,7 +5,7 @@ import Profile from './Profile';
 class App extends Component {
     state = {
         userData: {
-            firstName: 'Jhon',
+            firstName: 'John',
             lastName: 'Doe'
         }
     };
@@ -23,17 +23,16 @@ class App extends Component {
 
     render () {
         const { userData } = this.state;
+        const userName = `${userData.firstName}`;
+
         return (
             <div className="page">
-                <h1 className="title">{`Hello, ${userData.firstName} ${userData.lastName}`}</h1>
-                <main className="content">
-                    <ShoppingCart 
-                        userData={userData}/>
-                    <Profile 
-                        userData={userData}
-                        handleChange={this.handleChange}/>
-                </main>
-            </div>
+            <h1 className="title">{`Hello, ${userData.firstName} ${userData.lastName}`}</h1>
+            <main className="content">
+              <ShoppingCart userName={userName} />
+              <Profile userData={userData} handleChange={this.handleChange} />
+            </main>
+          </div>
         );
     }
 }
