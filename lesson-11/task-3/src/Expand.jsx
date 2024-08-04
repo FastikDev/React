@@ -10,7 +10,10 @@ const Expand = ({ children, isOpen, onClose, title}) => {
                 <button 
                     className="expand__toggle-btn"
                     onClick={onClose}>
-                         <FontAwesomeIcon icon={ isOpen ? faChevronUp : faChevronDown} />
+                        <FontAwesomeIcon 
+                        icon={isOpen ? faChevronUp : faChevronDown}
+                        className={isOpen ? 'fas fa-chevron-up' : 'fas fa-chevron-down'} 
+                    />
                 </button>
             </div>
             <div className="expand__content">
