@@ -1,22 +1,34 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from 'prop-types';
 
-const Expand = ({ children, isOpen, onClose, title }) => {
-    return (
-        <div className="expand border">
-            <div className="expand__header">
-                <span className="expand__title">{title}</span>
-                <button 
-                    className="expand__toggle-btn"
-                    onClick={onClose}>
-                    <i className={isOpen ? 'fas fa-chevron-up' : 'fas fa-chevron-down'}></i>
-                </button>
+class Expand extends Component {
+    state = {
+        isOpen: false,
+    };
+
+    handleToggle = () => {
+        this.setState((prevState) => ({
+            isOpen: !prevState.isOpen,
+        }));
+    }
+
+    render () {
+        return (
+            <div className="expand border">
+                <div className="expand__header">
+                    <span className="expand__title">{this.props.title}</span>
+                    <button 
+                        className="expand__toggle-btn"
+                        onClick={this.handleToggle}>
+                        <i className={this.state.isOpen ? 'fas fa-chevron-up' : 'fas fa-chevron-down'}></i>
+                    </button>
+                </div>
+                <div className="expand__content">
+                    {this.state.isOpen ? this.props.children : null}
+                </div>
             </div>
-            <div className="expand__content">
-                {isOpen ? children : null}
-            </div>
-        </div>
-    );
+        );
+    }
 };
 
 Expand.protoType = {

@@ -1,18 +1,7 @@
 import React, { Component } from "react";
 import Expand from './Expand';
 
-class App extends Component {
-    state = {
-        isOpen: false,
-    };
-
-    handleToggle = () => {
-        this.setState((prevState) => ({
-            isOpen: !prevState.isOpen,
-        }));
-    }
-
-    render () {
+const App = () => {
         const item = (
             <p>
         Hooks are a new addition in React 16.8. They let you use state and other React features
@@ -21,15 +10,11 @@ class App extends Component {
         );
         return (
             <div className="app">
-                <Expand 
-                    title='Some title' 
-                    isOpen={this.state.isOpen} 
-                    onClose={this.handleToggle}>
-                        {item}
+                <Expand title='Some title'>
+                   {item}
                 </Expand>
             </div>
         );
-    }
-}
+    };
 
 export default App;
