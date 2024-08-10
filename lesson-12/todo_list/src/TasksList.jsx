@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Task from './Task';
 import CreateTaskInput from './CreateTastInput';
 import { createTask, deleteTask, fetchTasksList, uptatedTasks } from './tasksGateway';
+import PropTypes from 'prop-types';
 
 class TasksList extends Component {
   state = {
@@ -69,3 +70,7 @@ class TasksList extends Component {
 }
 
 export default TasksList;
+
+TasksList.propTypes = {
+  tasks: PropTypes.array,
+};
