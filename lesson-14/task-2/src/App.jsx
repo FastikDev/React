@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Link, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import User from './User';
 
 const App = () => {
@@ -7,7 +7,7 @@ const App = () => {
     <div className="page">
       <Router>
         <div className="page__content">
-          <h1>Users</h1>
+          <h1>User</h1>
           <ul className="navigation">
             <li className="navigation__item">
               <Link to="/users/github">Github</Link>
@@ -17,8 +17,10 @@ const App = () => {
             </li>
           </ul>
           <Switch>
-            <Route path="users/:userId" component={User} />
-            <Route path="">
+            <Route path="/users/:userId">
+              <User />
+            </Route>
+            <Route path="/">
               <span>Select a user please</span>
             </Route>
           </Switch>
