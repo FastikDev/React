@@ -1,37 +1,48 @@
-import React, { useState } from "react";
+import React, { Component } from "react";
 import Login from "./Login";
 import Logout from "./Logout";
 import Spinner from "./Spinner";
 
-const Auth = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [loading, setLoading] = useState(false);
+class Auth extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoggedIn: false,
+      loading: false
+    };
+  }
 
-  const handleLogin = () => {
-    setLoading(true);
+  handleLogin = () => {
+    this.setState({ loading: true });
     setTimeout(() => {
-      setLoading(false);
-      setIsLoggedIn(true);
+      this.setState({
+        loading: false,
+        isLoggedIn: true
+      });
     }, 2000);
   };
 
-  const handleLogout = () => {
-    setIsLoggedIn(false);
+  handleLogout = () => {
+    this.setState({ isLoggedIn: false });
   };
 
-  if (loading) {
-    return <Spinner size="50px" />;
+  render() {
+    const { loading, isLoggedIn } = this.state;
+
+    if (loading) {
+      return <Spinner size="50px" />;
+    }
+
+    return (
+      <div>
+        {isLoggedIn ? (
+          <Logout onLogout={this.handleLogout} />
+        ) : (
+          <Login onLogin={this.handleLogin} />
+        )}
+      </div>
+    );
   }
+}
 
-  return (
-    <div>
-      {isLoggedIn ? (
-        <Logout onLogout={handleLogout} />
-      ) : (
-        <Login onLogin={handleLogin} />
-      )}
-    </div>
-  );
-};
-
-export default Auth;
+export default Auth; 
